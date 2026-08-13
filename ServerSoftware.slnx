@@ -1,0 +1,17 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Include/" />
+  <Folder Name="/Int/" />
+  <Folder Name="/Lib/" />
+  <Folder Name="/Output/" />
+  <Folder Name="/Source/">
+    <Project Path="Source/Protocol/Protocol.vcxproj" Id="8b8f1493-4156-489b-96c7-ad01d413cb2a" />
+    <Project Path="Source/ServerSoftware/ServerSoftware.vcxproj" Id="8dd63662-4949-4095-82a3-7d728832e0be">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="Source/TcpClient/TcpClient.vcxproj" Id="c8d2abcf-5713-4de8-aaf8-007152bc3055" />
+  </Folder>
+</Solution>
