@@ -101,8 +101,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProtocolParser\ProtocolParser.vcxproj">
-      <Project>{77351b86-940a-4434-a507-573514db8644}</Project>
+    <ProjectReference Include="..\TcpClient\TcpClient.vcxproj">
+      <Project>{18da2e98-b473-4b6d-b3d2-a81847777e68}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
