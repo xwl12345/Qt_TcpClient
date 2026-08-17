@@ -50,10 +50,7 @@ int ProtocolParser::getBufferSize()
     return m_buffer.size();
 }
 
-int ProtocolParser::debugFindFrameStart()
-{
-    return findFrameStart();
-}
+
 int ProtocolParser::findFrameStart()
 {
 	int pos = m_buffer.indexOf("\xA5\x5A");

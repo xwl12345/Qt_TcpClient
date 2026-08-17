@@ -24,7 +24,6 @@ public:
 	bool hasCompleteMessage();//完整性检测
 	QString takeNextMessage();//提取出队
 	int getBufferSize();
-	int debugFindFrameStart();
 private:
 	int findFrameStart();//帧头同步
 	bool parseFrame(int startPos,int& dataLen, int& totalLen);
