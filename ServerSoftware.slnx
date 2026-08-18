@@ -16,7 +16,6 @@
       <Platform Project="x64" />
     </Project>
     <Project Path="Source/TcpClient/TcpClient.vcxproj" Id="18da2e98-b473-4b6d-b3d2-a81847777e68">
-      <BuildDependency Project="Source/ProtocolParser/ProtocolParser.vcxproj" />
       <Platform Project="x64" />
     </Project>
   </Folder>

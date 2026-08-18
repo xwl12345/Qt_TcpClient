@@ -1,4 +1,3 @@
-#pragma once
 #include "ProtocolParser.h"
 void ProtocolParser::appendData(const QByteArray& data)
 {

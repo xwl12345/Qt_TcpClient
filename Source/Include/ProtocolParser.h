@@ -1,8 +1,8 @@
 #pragma once
 #include <QString>
 #include <QByteArray>
-
-class  ProtocolParser
+#include "protocolparser_global.h"
+class PROTOCOLPARSER_EXPORT ProtocolParser
 {
 public:
 static QByteArray encode(const QString& message)//打包

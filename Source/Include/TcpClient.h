@@ -4,15 +4,16 @@
 #include <atomic>
 #include <QTimer>
 #include "ProtocolParser.h"
-class  TcpClient:public QObject
+#include "tcpclient_global.h"
+class TCPCLIENT_EXPORT TcpClient:public QObject
 {
     Q_OBJECT
 public:
     explicit TcpClient(QObject* parent=nullptr);
     void connectToServer(const QString& address,const quint16 port);//发送Tcp连接
     void disconnectFromServer();//请求中断
-    void sendMessage(const QString& data);
-    void OnReConnect();
+    void sendMessage(const QString& data);//发送信息
+    void OnReConnect();//重连
 public slots:
     void OnConnected();
     void OnDisConnected();
