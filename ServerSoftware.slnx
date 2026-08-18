@@ -8,6 +8,9 @@
   <Folder Name="/Lib/" />
   <Folder Name="/Output/" />
   <Folder Name="/Source/">
+    <Project Path="Source/ProtocolParser/ProtocolParser.vcxproj" Id="77351b86-940a-4434-a507-573514db8644">
+      <Platform Project="x64" />
+    </Project>
     <Project Path="Source/ServerSoftware/ServerSoftware.vcxproj" Id="8dd63662-4949-4095-82a3-7d728832e0be">
       <BuildDependency Project="Source/TcpClient/TcpClient.vcxproj" />
       <Platform Project="x64" />
@@ -17,7 +20,4 @@
       <Platform Project="x64" />
     </Project>
   </Folder>
-  <Project Path="Source/ProtocolParser/ProtocolParser.vcxproj" Id="77351b86-940a-4434-a507-573514db8644">
-    <Platform Project="x64" />
-  </Project>
 </Solution>

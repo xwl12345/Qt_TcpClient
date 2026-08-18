@@ -61,7 +61,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>$(SolutionDir)Output</OutDir>
-    <IncludePath>$(SolutionDir)Include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>

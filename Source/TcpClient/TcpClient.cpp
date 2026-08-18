@@ -7,10 +7,10 @@ TcpClient::TcpClient(QObject* parent):QObject(parent)
 {	
 	m_Reconnect_timer = new QTimer(this);
 	m_client = new QTcpSocket(this);
-	connect(m_client, &QTcpSocket::connected, this, TcpClient::OnConnected);
-	connect(m_client, &QTcpSocket::disconnected, this, TcpClient::OnDisConnected);
-	connect(m_Reconnect_timer, &QTimer::timeout, this, TcpClient::startReconnect);
-	connect(m_client, &QTcpSocket::readyRead, this, TcpClient::OnReadyRead);
+	connect(m_client, &QTcpSocket::connected, this, &TcpClient::OnConnected);
+	connect(m_client, &QTcpSocket::disconnected, this, &TcpClient::OnDisConnected);
+	connect(m_Reconnect_timer, &QTimer::timeout, this, &TcpClient::startReconnect);
+	connect(m_client, &QTcpSocket::readyRead, this, &TcpClient::OnReadyRead);
 
 
 }
@@ -43,7 +43,7 @@ void TcpClient::startReconnect()
 {
 	if (time > 1600)
 	{
-		emit reconnect_Timeout;
+		emit reconnect_Timeout();
 		time = 100;
 	}
 	time *= 2;
