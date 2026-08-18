@@ -23,16 +23,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tcpclient_global.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClCompile Include="TcpClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="TcpClient.h">
+    <ClInclude Include="..\Include\TcpClient.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
+    </ClInclude>
   </ItemGroup>
 </Project>

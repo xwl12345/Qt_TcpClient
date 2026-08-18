@@ -96,7 +96,6 @@
   <ItemGroup>
     <QtRcc Include="ServerSoftware.qrc" />
     <QtUic Include="ServerSoftware.ui" />
-    <QtMoc Include="ServerSoftware.h" />
     <ClCompile Include="ServerSoftware.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -104,6 +103,9 @@
     <ProjectReference Include="..\TcpClient\TcpClient.vcxproj">
       <Project>{18da2e98-b473-4b6d-b3d2-a81847777e68}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="..\Include\ServerSoftware.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
