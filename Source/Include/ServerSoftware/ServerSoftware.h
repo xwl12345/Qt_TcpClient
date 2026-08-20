@@ -1,7 +1,8 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "ui_ServerSoftware.h"
+#include "ServerSoftware/ui_ServerSoftware.h"
+#include "TcpClient/TcpClient.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ServerSoftwareClass; };
@@ -17,5 +18,6 @@ public:
 
 private:
     Ui::ServerSoftwareClass *ui;
+    
 };
 

@@ -28,10 +28,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\ProtocolParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Include\protocolparser_global.h">
+    <ClInclude Include="..\Include\ProtocolParser\ProtocolParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

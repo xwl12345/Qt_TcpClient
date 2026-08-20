@@ -28,12 +28,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\tcpclient_global.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="..\Include\TcpClient.h">
+    <QtMoc Include="..\Include\TcpClient\TcpClient.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

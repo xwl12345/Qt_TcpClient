@@ -1,5 +1,5 @@
 #pragma once
-#include "TcpClient.h"
+#include "TcpClient/TcpClient.h"
 
 TcpClient::TcpClient(QObject* parent):QObject(parent)
 									 ,m_client(nullptr)

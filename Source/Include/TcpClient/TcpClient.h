@@ -3,8 +3,18 @@
 #include <QTcpSocket>
 #include <atomic>
 #include <QTimer>
-#include "ProtocolParser.h"
-#include "tcpclient_global.h"
+#include "ProtocolParser/ProtocolParser.h"
+#include <QtCore/qglobal.h>
+
+#ifndef BUILD_STATIC
+# if defined(TCPCLIENT_LIB)
+#  define TCPCLIENT_EXPORT Q_DECL_EXPORT
+# else
+#  define TCPCLIENT_EXPORT Q_DECL_IMPORT
+# endif
+#else
+# define TCPCLIENT_EXPORT
+#endif
 class TCPCLIENT_EXPORT TcpClient:public QObject
 {
     Q_OBJECT
@@ -20,9 +30,9 @@ public slots:
     void OnReadyRead();
     void startReconnect();
 signals:
-    void connectedSucceeded();
-    void disconnectSucceeded();
-    void MessageRecved(const QString& data);
+    void connectedSucceeded();//连接成功
+    void disconnectSucceeded();//断连成功信号
+    void MessageRecved(const QString& data);//接收数据信号
     void reconnect_Timeout();//重连超时
 private:
     QTcpSocket* m_client;

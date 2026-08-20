@@ -1,4 +1,4 @@
-#include "ProtocolParser.h"
+#include "ProtocolParser/ProtocolParser.h"
 void ProtocolParser::appendData(const QByteArray& data)
 {
 	m_buffer.append(data);

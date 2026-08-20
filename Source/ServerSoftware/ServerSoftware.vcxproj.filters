@@ -39,7 +39,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\Include\ServerSoftware.h">
+    <QtMoc Include="..\Include\ServerSoftware\ServerSoftware.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
