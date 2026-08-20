@@ -34,6 +34,7 @@ signals:
     void disconnectSucceeded();//断连成功信号
     void MessageRecved(const QString& data);//接收数据信号
     void reconnect_Timeout();//重连超时
+    void reconnect();//重连信号
 private:
     QTcpSocket* m_client;
     ProtocolParser m_parser;

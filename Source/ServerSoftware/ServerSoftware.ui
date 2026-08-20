@@ -126,7 +126,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QTextBrowser" name="textBrowser_logformation">
+              <widget class="QTextBrowser" name="textBrowser_logInformation">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                  <horstretch>0</horstretch>

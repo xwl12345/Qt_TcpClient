@@ -34,7 +34,7 @@ void TcpClient::OnReadyRead()
 	m_parser.appendData(data);
 	while (m_parser.hasCompleteMessage())
 	{
-		QString msg = m_parser.takeNextMessage();
+		const QString msg = m_parser.takeNextMessage();
 		emit MessageRecved(msg);
 	}
 }
@@ -49,12 +49,13 @@ void TcpClient::startReconnect()
 	time *= 2;
 	OnReConnect();
 	m_Reconnect_timer->start(time);
+	emit reconnect();
 }
 
 
 void TcpClient::sendMessage(const QString& data)
 {
-	QByteArray message = m_parser.encode(data);
+	const QByteArray message = m_parser.encode(data);
 	m_client->write(message);
 }
 

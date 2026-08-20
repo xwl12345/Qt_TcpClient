@@ -60,16 +60,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
     <IncludePath>$(SolutionDir)Source\Include;$(IncludePath)</IncludePath>
     <IntDir>$(SolutionDir)Int\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)D</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <IncludePath>$(SolutionDir)Source\Include;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)</TargetName>
     <IntDir>$(SolutionDir)Int\$(Configuration)\$(ProjectName)\</IntDir>
-    <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Output\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
@@ -77,7 +77,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib\Commonlib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Int\$(Configuration)\$(ProjectName)\qt\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <QtUic>
       <Include>$(QtIntDir)</Include>
@@ -85,14 +85,15 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <ImportLibrary>$(SolutionDir)lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\Commonlib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>$(OutDir)\$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(SolutionDir)Output\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Source\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Int\$(Configuration)\$(ProjectName)\qt\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <QtUic>
-      <Include>$(QtIntDir)</Include>
+      <Include>
+      </Include>
     </QtUic>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -131,6 +132,14 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\Include\ServerSoftware\ServerSoftware.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProtocolParser\ProtocolParser.vcxproj">
+      <Project>{77351b86-940a-4434-a507-573514db8644}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TcpClient\TcpClient.vcxproj">
+      <Project>{18da2e98-b473-4b6d-b3d2-a81847777e68}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
