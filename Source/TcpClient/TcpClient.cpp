@@ -1,6 +1,6 @@
 #pragma once
 #include "TcpClient/TcpClient.h"
-
+#include <QDebug>
 TcpClient::TcpClient(QObject* parent):QObject(parent)
 									 ,m_client(nullptr)
 									 ,m_close(true)
@@ -11,12 +11,17 @@ TcpClient::TcpClient(QObject* parent):QObject(parent)
 	connect(m_client, &QTcpSocket::disconnected, this, &TcpClient::OnDisConnected);
 	connect(m_Reconnect_timer, &QTimer::timeout, this, &TcpClient::startReconnect);
 	connect(m_client, &QTcpSocket::readyRead, this, &TcpClient::OnReadyRead);
-
+	connect(m_client, &QTcpSocket::errorOccurred, this, &TcpClient::OnError);
 
 }
 
 void TcpClient::connectToServer(const QString& address, const quint16 port)
 {
+	if (m_client->state() != QAbstractSocket::UnconnectedState)
+	{
+		m_close.store(false);
+		m_client->abort();
+	}
 	m_address = address;
 	m_port = port;
 	m_client->connectToHost(address, port);
@@ -24,6 +29,8 @@ void TcpClient::connectToServer(const QString& address, const quint16 port)
 
 void TcpClient::OnConnected()
 {
+	m_close.store(true);
+	qDebug() << "OnConnected";
 	emit connectedSucceeded();//发送连接成功信号，在后续ui触发事件时更新信息
 
 }
@@ -50,6 +57,11 @@ void TcpClient::startReconnect()
 	OnReConnect();
 	m_Reconnect_timer->start(time);
 	emit reconnect();
+}
+
+void TcpClient::OnError(QAbstractSocket::SocketError socketError)
+{
+	emit connectFailed();
 }
 
 

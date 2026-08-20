@@ -1,9 +1,10 @@
 #include "ServerSoftware/ServerSoftware.h"
 #include <QHostAddress>
 #include <QMessageBox>
-ServerSoftware::ServerSoftware(QWidget *parent)
+ServerSoftware::ServerSoftware(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::ServerSoftwareClass())
+    , isConnecting(false)
 {
     ui->setupUi(this);
     m_client = new TcpClient(this);
@@ -18,6 +19,7 @@ ServerSoftware::ServerSoftware(QWidget *parent)
     connect(m_client, &TcpClient::disconnectSucceeded, this, &ServerSoftware::DisconnectSucceeded);
     connect(m_client, &TcpClient::reconnect, this, &ServerSoftware::Reconnect);
     connect(m_client, &TcpClient::reconnect_Timeout, this, &ServerSoftware::ReconnectFailed);
+    connect(m_client, &TcpClient::connectFailed, this, &ServerSoftware::ConnectFailed);
 }
 
 ServerSoftware::~ServerSoftware()
@@ -27,6 +29,11 @@ ServerSoftware::~ServerSoftware()
 
 void ServerSoftware::OnConnectBtnClicked()
 {
+    if (isConnecting == true)
+    {
+        ui->textBrowser_logInformation->append("正在连接中，请勿重复点击");
+        return;
+    }
     QHostAddress addr;
     QString address = ui->lineEdit_ip->text();
     bool ok;
@@ -41,6 +48,8 @@ void ServerSoftware::OnConnectBtnClicked()
         QMessageBox::critical(this, "错误", "请输入正确的port");
         return;
     }
+    isConnecting = true;
+    ui->textBrowser_logInformation->append("正在连接中...");
     m_client->connectToServer(address, port);
 
 }
@@ -59,9 +68,11 @@ void ServerSoftware::OnDisconnectBtnClicked()
 
 void ServerSoftware::ConnectSucceeded()
 {
+    qDebug() << "ServerSoftware:connectSucceeded";
     ui->pushButton_connect->setEnabled(false);
     ui->pushButton_send->setEnabled(true);
     ui->pushButton_disconnect->setEnabled(true);
+    isConnecting = false;
     ui->textBrowser_logInformation->append("连接成功");
    
 
@@ -95,5 +106,14 @@ void ServerSoftware::ReadyRead(const QString msg)
 {
     ui->textBrowser_logInformation->append("收到信息:");
     ui->textBrowser_logInformation->append(msg);
+}
+
+void ServerSoftware::ConnectFailed()
+{
+    ui->textBrowser_logInformation->append("连接失败");
+    ui->pushButton_connect->setEnabled(true);
+    ui->pushButton_send->setEnabled(false);
+    ui->pushButton_disconnect->setEnabled(false);
+    isConnecting = false;
 }
 

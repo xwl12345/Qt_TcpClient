@@ -24,8 +24,10 @@ public slots:
     void Reconnect();
     void ReconnectFailed();
     void ReadyRead(const QString msg);
+    void ConnectFailed();
 private:
     Ui::ServerSoftwareClass *ui;
     TcpClient* m_client;
+    bool isConnecting;
 };
 
