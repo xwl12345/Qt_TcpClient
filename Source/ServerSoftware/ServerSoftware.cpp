@@ -64,6 +64,9 @@ void ServerSoftware::OnSendBtnClicked()
 void ServerSoftware::OnDisconnectBtnClicked()
 {
     m_client->disconnectFromServer();
+    ui->pushButton_connect->setEnabled(true);
+    ui->pushButton_send->setEnabled(false);
+    ui->pushButton_disconnect->setEnabled(false);
 }
 
 void ServerSoftware::ConnectSucceeded()
@@ -80,6 +83,7 @@ void ServerSoftware::ConnectSucceeded()
 
 void ServerSoftware::DisconnectSucceeded()
 {
+    qDebug() << "DisconnectSucceeded";
     ui->pushButton_connect->setEnabled(true);
     ui->pushButton_send->setEnabled(false);
     ui->pushButton_disconnect->setEnabled(false);

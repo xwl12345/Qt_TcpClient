@@ -80,6 +80,7 @@ void TcpClient::disconnectFromServer()
 {
 	m_close.store(false);
 	m_client->abort();
+	emit disconnectSucceeded();
 }
 
 void TcpClient::OnDisConnected()
