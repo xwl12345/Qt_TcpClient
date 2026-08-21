@@ -58,6 +58,12 @@ void ServerSoftware::OnConnectBtnClicked()
 void ServerSoftware::OnSendBtnClicked()
 {
     QString message = ui->lineEdit_send->text();
+	bool is_empty = message.isEmpty();
+    if (is_empty)
+    {
+        QMessageBox::warning(this, "警告", "请输入信息");
+        return;
+    }
     m_client->sendMessage(message);
 }
 
